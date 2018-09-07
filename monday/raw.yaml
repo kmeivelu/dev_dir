@@ -1,0 +1,19 @@
+---
+- name: Juniper diagnostics
+  hosts: VJ1
+
+  tasks:
+   - name: System process details
+     raw: "show system process extensive"
+
+   - name: RE CPU and Memory diagnostics
+     raw: "show task memory"
+
+   - name: RPD Memory diagnostics
+     raw: "show chassis routing-engine"
+
+   - name: Interface status
+     raw: "show interface terse"
+
+     register: print_output
+   - debug: var=print_output 

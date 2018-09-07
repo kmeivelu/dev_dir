@@ -1,0 +1,20 @@
+---
+- name: Juniper diagnostics
+  hosts: VJ1
+  gather_facts: false
+
+  tasks:
+#   - name: System process details
+#     raw: "show system process extensive"
+
+#   - name: RE CPU and Memory diagnostics
+#     raw: "show task memory"
+
+   - name: Version detail 
+     raw: "show version"
+
+   - name: Uptime 
+     raw: "show system uptime"
+
+     register: print_output
+   - debug: var=print_output.stdout_lines 

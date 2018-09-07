@@ -1,0 +1,30 @@
+---
+- name: Juniper diagnostics
+  hosts: group 
+#  vars:
+#   ansible_user: kmeivelu
+#   ansible_ssh_pass: snt123
+
+  gather_facts: false
+
+  tasks:
+   - name: System process details
+     raw: "show system process extensive|no-more"
+
+     register: out1
+   - debug: var=out1.stdout_lines 
+   - name: RE CPU and Memory diagnostics
+     raw: "show task memory|no-more"
+
+     register: out3
+   - debug: var=out3.stdout_lines   
+   - name: Version detail 
+     raw: "show version"
+     
+     register: out2
+   - debug: var=out2.stdout_lines   
+   - name: Uptime 
+     raw: "show system uptime"
+
+     register: print_output
+   - debug: var=print_output.stdout_lines 

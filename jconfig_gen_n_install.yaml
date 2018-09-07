@@ -1,0 +1,56 @@
+---
+- name: Generate and Install the configuration on JUNOS Devices
+  hosts: all
+  roles:
+       - juniper.junos
+  connection: local
+  gather_facts: no
+
+  vars: 
+    tmp_dir: "tmp"
+    conf_file: "{{tmp_dir}}/{{inventory_hostname}}.set"
+
+  vars_prompt: 
+   - name: username
+     prompt: JUNOS Username
+     private: no
+
+   - name: password
+     prompt: JUNOS Password
+     private: yes 
+
+  tasks:
+    - debug: var=tmp_dir
+
+    - debug: var=conf_file
+
+    - name: Create configs directory
+      file:
+         path: "{{ tmp_dir }}"
+         state: directory
+
+    - name: Install the generated configuration
+      junos_install_config:
+         host: "{{ router }}"
+         user: "{{ username }}"
+         passwd: "{{ password }}"
+         port: 22
+         file: "{{ conf_file }}"
+         timeout: 120
+         replace: yes
+         comment: Configured by Ansible Playbook  
+
+
+    - name: Save device information using Templates
+      template:
+         src: templates/VJ.j2
+         dest: "{{ conf_file }}"
+ 
+
+
+
+
+
+
+
+ 

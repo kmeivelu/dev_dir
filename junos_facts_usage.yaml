@@ -1,0 +1,25 @@
+---
+- name: Using JUNOS facts
+  hosts: group
+  gather_facts: false
+  tasks:
+  - name: Collect configuration from Juniper devices
+    junos_facts:
+        gather_subset: config
+        config_format: xml 
+    register: output
+  - debug: var==output.stdout_lines
+
+
+
+
+
+
+
+
+
+
+
+
+
+

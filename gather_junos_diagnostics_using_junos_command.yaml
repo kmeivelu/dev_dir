@@ -1,0 +1,50 @@
+---
+- name: JUNOS Dianostics on RE CPU and memeor
+  hosts: 
+       - VJ1
+       - VJ2
+       - VJ3 
+  gather_facts: false
+
+
+  vars_prompt: 
+    - name: username
+      prompt: JUNOS Username
+      private: no
+
+    - name: password
+      prompt: JUNOS Password
+      private: yes 
+
+  tasks:
+  - name: RE CPU diagnostics
+    junos_command:
+      commands:
+              - show chassis routing-engine |no-more
+              - show version
+
+    register: output_1
+  - debug: var=output_1.stdout_lines
+
+  - name: System process and RPD diagnostics
+    junos_command:
+      commands:
+             - show system processes extensive| no-more
+             - show task memory detail |no-more
+             - show task memory summary| no-more
+
+    register: output_2
+  - debug: var=output_2.stdout_lines
+  
+  - name: Route summary and details
+    junos_command:
+      commands: 
+             - show route summary| no-more
+             - show route table inet.0 | no-more
+             - show route table VRF_1.inet.0 | no-more
+
+    register: output_3
+  - debug: var=output_3.stdout_lines 
+
+
+

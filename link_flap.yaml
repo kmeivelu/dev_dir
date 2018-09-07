@@ -1,0 +1,51 @@
+---
+- name: Flap link 10 times
+  hosts: 
+       - VJ1
+       - VJ2
+       - VJ3
+  gather_facts: no
+  connection: local
+  vars_prompt:
+     - name: username
+       prompt: Username
+       private: no
+       
+     - name: Pasword
+       prompt: password
+       private: yes
+       
+  tasks:
+     - name: Commands to flap link
+       junos_command:
+          commands: 
+                - start shell user root
+       
+       vars_prompt:
+         -name: Password
+          prompt: password
+          private: yes
+       
+       junos_command:   
+          commands: 
+                - ifconfig ge-0/0/0 down
+                - ifconfig ge-0/0/0 up
+                
+     - debug:
+           msg: "Links has flapped"
+    
+          
+           
+               
+          
+           
+            
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+---
+- name: Get show version
+  hosts: VJ1
+         Juniper
+  gather_facts: false
+
+  tasks:
+    - name: Software Versio
+      raw: show version
+
+      register: print_output
+
+    - debug: var=print_output

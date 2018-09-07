@@ -1,0 +1,12 @@
+---
+- name: JUNOS Banner
+  hosts: group
+  gather_facts: false
+#  connection: local
+#  ansible_connection: ssh 
+  tasks:
+  - name: Configure my banner
+    junos_banner: 
+          banner: login
+          text: This is my ansible banner
+          state: present

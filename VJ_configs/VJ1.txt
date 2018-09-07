@@ -1,0 +1,3 @@
+set system hostname VJ1
+set interfaces lo0.0 family inet address 100.0.0.1/32
+

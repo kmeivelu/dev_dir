@@ -1,0 +1,4 @@
+ansible_user: kmeivelu
+ansible_password: snt123
+ansible_connection: netconf
+ansible_network_os: junos  

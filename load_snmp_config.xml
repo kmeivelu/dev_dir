@@ -1,0 +1,38 @@
+    <configuration>
+            <snmp>
+                <view>
+                    <name>all</name>
+                    <oid>
+                        <name>1</name>
+                    </oid>
+                </view>
+                <community>
+                    <name>pub</name>
+                </community>
+                <community>
+                    <name>public</name>
+                    <authorization>read-write</authorization>
+                </community>
+            </snmp>
+    </configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

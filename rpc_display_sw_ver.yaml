@@ -1,0 +1,29 @@
+---
+- name: Get device uptime
+  hosts: 
+       - VJ1
+       - VJ2
+       - VJ3
+
+  gather_facts: no
+  connection: local
+  vars_prompt:
+      - name: Username
+        prompt: JUNOS Username
+        private: no
+
+      - name: Password
+        prompt: JUNOS Password 
+        private: yes
+
+  tasks:
+     - name: Get the software version using rpc JUNOS modules
+       
+
+
+
+
+
+
+
+

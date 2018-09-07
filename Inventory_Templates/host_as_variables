@@ -1,0 +1,11 @@
+[group]
+VJ1
+VJ2
+VJ3
+[group:var]
+ansible_user=kmeivelu
+ansible_password=snt12
+
+
+
+

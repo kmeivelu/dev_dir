@@ -1,0 +1,5 @@
+ansible_user: kmeivelu
+ansible_password: snt123
+ansible_connection: local
+
+
