@@ -1,0 +1,15 @@
+---
+- name: Template for VJ configuration
+  hosts: localhost
+  tasks:
+  - name: Loopback Address Template
+    template:
+      src: s.j2
+      dest: "VJ_configs/{{item.hostname}}.txt"
+    with_items:
+              - {hostname: VJ1, loopback: 0, host: 1}
+              - {hostname: VJ2, loopback: 0, host: 2}
+              - {hostname: VJ3, loopback: 0, host: 3}
+
+
+

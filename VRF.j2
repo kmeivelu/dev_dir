@@ -1,0 +1,10 @@
+set routing-instances VRF_2 instance-type vrf
+set routing-instances VRF_2 interface lo0.2
+set routing-instances VRF_2 route-distinguisher 100.0.0.{{lo0}}:2
+set routing-instances VRF_2 vrf-target target:9583:2
+set routing-instances VRF_2 routing-options static route {{msoctet}}.121.1.0/24 discard
+set routing-instances VRF_2 routing-options static route {{msoctet}}.121.2.0/24 discard
+set routing-instances VRF_2 routing-options static route {{msoctet}}.121.3.0/24 discard
+set routing-instances VRF_2 routing-options static route {{msoctet}}.121.4.0/24 discard
+set routing-instances VRF_2 routing-options static route {{msoctet}}.121.5.0/24 discard
+set interfaces lo0 unit 2 family inet address {{msoctet}}.0.0.1/32

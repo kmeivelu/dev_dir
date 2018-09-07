@@ -1,7 +1,7 @@
 [group]
-VJ1 router=VJ1 loopback=0 host=1
-VJ2 router=VJ2 loopback=0 host=2
-VJ3 router=VJ3 loopback=0 host=3
+VJ1 hostname=VJ1 lo0=1 msoctet=101 
+VJ2 hostname=VJ2 lo0=2 msoctet=102 
+VJ3 hostname=VJ3 lo0=3 msoctet=103
 #[group:var]
 #ansible_user=kmeivelu
 #ansible_password=snt12

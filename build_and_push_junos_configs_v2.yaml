@@ -1,0 +1,29 @@
+---
+- name: JUNOS Dianostics on RE CPU and memeor
+  hosts: group
+  gather_facts: false
+  connection: local
+  vars_prompt:
+     - name: username
+       prompt: Username
+       private: no
+       
+     - name: Pasword
+       prompt: password
+       private: yes
+  vars:
+     os: "junos"
+
+  tasks:
+    - name: Build Configuration
+	  template: 
+	         src: VRF.j2
+			 dest: "VRF_Configs/{{hostname}}.conf
+			 
+	- name: Install Configuration
+	  napalm_install_config:
+	         hostname = {{hostname}}
+			 dev_os = {{os}}
+			 config_file = VRF_Configs/{{hostname}}.conf
+			 commit_changes = 1
+			 replace_config = 0
