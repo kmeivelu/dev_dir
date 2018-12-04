@@ -1,0 +1,11 @@
+[group]
+VJ1 hostname=VJ1 lo0=1 msoctet=101 
+VJ2 hostname=VJ2 lo0=2 msoctet=102 
+VJ3 hostname=VJ3 lo0=3 msoctet=103
+#[group:var]
+#ansible_user=kmeivelu
+#ansible_password=snt12
+
+
+
+
